@@ -1,66 +1,201 @@
-# Project-3
+🚦 Smart Traffic Predictor
 
-# 🚦 Smart Traffic Predictor
+An app that helps you decide the best time to leave so you arrive on time.
+See live traffic, distance, duration, and a suggested departure time, with searchable Google Maps for origin & destination.
 
-An AI-powered traffic predictor that helps you decide the **best time to leave** for your destination.  
-It shows **real-time traffic, distance, duration, and optimized departure suggestions** with interactive maps.
+✨ Features
 
----
+🌍 Search origin/destination with Google Places
 
-## ✨ Features
-- 🌍 Interactive Google Maps with origin & destination search
-- ⏳ Travel time & distance calculation using Google Distance Matrix API
-- 🕒 Smart departure suggestions (leave now or later to arrive on time)
-- 🔄 Swap origin/destination with one click
-- 🎨 Modern, responsive UI
+🗺️ Pin on map and auto-fill the address
 
----
+🔄 One-click Swap for origin/destination
 
-## 🛠️ Tech Stack
-- **Frontend:** React (Vite/CRA) + TailwindCSS
-- **Backend:** FastAPI (Python)
-- **APIs:** Google Maps Places API + Distance Matrix API
-- **Deployment:** Vercel (Frontend) + Railway/Render (Backend)
+⏳ Real-time distance & duration
 
----
+🕒 “Leave by” suggestion for a chosen arrival time
 
-## 🚀 Getting Started (Run Locally)
+📱 Modern UI that works great on mobile
 
-### 1️⃣ Clone the Repository
+🧰 Tech
 
-git clone https://github.com/your-username/smart-traffic-predictor.git
-cd smart-traffic-predictor
-2️⃣ Backend Setup (FastAPI)
-cd backend
-pip install -r requirements.txt
-uvicorn main:app --reload
+Frontend: React (Create React App)
 
-3️⃣ Frontend Setup (React)
-cd frontend
-npm install
-npm start
-```bash
-************************************************************************************************************************************
-🔑 API Keys Setup
+Backend: FastAPI (Python)
 
-You need a Google Maps API Key with the following enabled:
+APIs: Google Maps JavaScript, Places, Distance Matrix
+
+Deploy: Vercel (frontend) + Railway/Render (backend)
+
+🔐 API Keys (one-time setup)
+
+You need one Google Maps API key with billing enabled and these APIs turned on:
+
+Maps JavaScript API
 
 Places API
 
 Distance Matrix API
 
-Maps JavaScript API
+You will paste this key into two places later:
 
-Add keys:
+backend/.env
 
-In backend/.env:
+frontend/.env
 
-GOOGLE_MAPS_API_KEY=your_api_key_here
+Don’t commit .env files to GitHub.
+
+🖥️ What you need installed
+
+Python 3.10+ (3.11 or 3.13 are fine)
+
+Node.js 18+ and npm
+
+Git
+
+🚀 Run the project locally (step by step)
+1) Download the code
+git clone https://github.com/your-username/smart-traffic-predictor.git
+cd smart-traffic-predictor
+
+2) Start the backend (FastAPI)
+a) Open a terminal and go to the backend folder
+cd backend
+
+b) Create a virtual environment
+
+Windows (PowerShell):
+
+py -m venv .venv
+.venv\Scripts\activate
 
 
-In frontend/.env:
+macOS/Linux:
 
-REACT_APP_GOOGLE_MAPS_API_KEY=your_api_key_here
+python3 -m venv .venv
+source .venv/bin/activate
 
 
-(Restart servers after adding keys)
+You should see (.venv) at the start of your terminal line after activation.
+
+c) Install Python packages
+pip install -r requirements.txt
+
+
+If pip fails, try:
+python -m pip install -r requirements.txt (Windows)
+python3 -m pip install -r requirements.txt (macOS/Linux)
+
+d) Add your Google API key
+
+Create a file named .env inside the backend folder with this content:
+
+GOOGLE_MAPS_API_KEY=YOUR_GOOGLE_MAPS_API_KEY_HERE
+
+e) Run the backend server
+uvicorn main:app --reload
+
+
+You should see something like:
+
+Uvicorn running on http://127.0.0.1:8000
+
+
+Test it in your browser:
+Open http://127.0.0.1:8000/docs
+ — you should see the FastAPI docs.
+
+Leave this terminal open.
+
+3) Start the frontend (React)
+
+Open a new terminal window (keep the backend running), then:
+
+a) Go to the frontend folder
+cd smart-traffic-predictor/frontend
+
+b) Add your Google API key
+
+Create a file named .env inside the frontend folder:
+
+REACT_APP_GOOGLE_MAPS_API_KEY=YOUR_GOOGLE_MAPS_API_KEY_HERE
+
+
+After creating or changing .env, you must restart npm start for it to take effect.
+
+c) Install Node packages
+npm install
+
+
+If you see “react-scripts is not recognized”, run:
+
+npm install react-scripts --save
+
+d) Run the frontend
+npm start
+
+
+Your browser should open http://localhost:3000
+ automatically.
+If not, open it manually.
+
+🕹️ How to use
+
+In Origin, start typing (e.g., “Mumbai”). Select from the suggestions.
+
+In Destination, do the same.
+
+You can also tap the map to pinpoint a location — the address fills in automatically.
+
+Set Desired Arrival Time (optional).
+
+Click Get Route.
+
+See Distance, Live Duration, and Leave by time.
+
+Use 🔄 Swap to flip origin/destination instantly.
+
+🧪 Quick checks if something breaks
+
+Frontend can’t fetch / shows “Failed to fetch”
+Make sure backend is running on http://127.0.0.1:8000 and you didn’t change the URL inside frontend/src/App.js.
+
+422 error
+Fill both Origin and Destination.
+
+Map/Autocomplete not working
+
+Check your frontend/.env key.
+
+Make sure the three APIs are enabled.
+
+Restart npm start after editing .env.
+
+CORS issues
+Our backend enables CORS for all origins in development. Keep both apps on your local machine (ports 3000 and 8000).
+
+🧹 Clean start commands (if npm gets grumpy)
+
+Windows (PowerShell):
+
+cd frontend
+rd /s /q node_modules
+del package-lock.json
+npm install
+npm start
+
+
+macOS/Linux:
+
+cd frontend
+rm -rf node_modules package-lock.json
+npm install
+npm start
+
+📦 Deploy (optional)
+
+Frontend: Vercel
+
+Backend: Railway or Render
+
+Keep API keys in each platform’s Environment Variables, not in code.

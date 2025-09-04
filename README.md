@@ -56,43 +56,40 @@ Git
 🚀 Run the project locally (step by step)
 1) Download the code
 git clone https://github.com/your-username/smart-traffic-predictor.git
+
 cd smart-traffic-predictor
 
-2) Start the backend (FastAPI)
+3) Start the backend (FastAPI)
 a) Open a terminal and go to the backend folder
+
 cd backend
 
 b) Create a virtual environment
-
 Windows (PowerShell):
 
 py -m venv .venv
 .venv\Scripts\activate
 
-
-macOS/Linux:
-
-python3 -m venv .venv
-source .venv/bin/activate
-
-
 You should see (.venv) at the start of your terminal line after activation.
 
 c) Install Python packages
+
 pip install -r requirements.txt
 
 
 If pip fails, try:
+
 python -m pip install -r requirements.txt (Windows)
+
 python3 -m pip install -r requirements.txt (macOS/Linux)
 
 d) Add your Google API key
-
-Create a file named .env inside the backend folder with this content:
+Inside the backend file there is a .env file , just genrate an api key and put it there
 
 GOOGLE_MAPS_API_KEY=YOUR_GOOGLE_MAPS_API_KEY_HERE
 
 e) Run the backend server
+
 uvicorn main:app --reload
 
 
@@ -112,6 +109,7 @@ Leave this terminal open.
 Open a new terminal window (keep the backend running), then:
 
 a) Go to the frontend folder
+
 cd smart-traffic-predictor/frontend
 
 b) Add your Google API key
@@ -124,14 +122,16 @@ REACT_APP_GOOGLE_MAPS_API_KEY=YOUR_GOOGLE_MAPS_API_KEY_HERE
 After creating or changing .env, you must restart npm start for it to take effect.
 
 c) Install Node packages
-npm install
 
+npm install
+(here if it shows .env at the begining of the line then type "deactivate" , it should go..)
 
 If you see “react-scripts is not recognized”, run:
 
 npm install react-scripts --save
 
 d) Run the frontend
+
 npm start
 
 
@@ -184,18 +184,5 @@ del package-lock.json
 npm install
 npm start
 
-
-macOS/Linux:
-
-cd frontend
-rm -rf node_modules package-lock.json
-npm install
-npm start
-
-📦 Deploy (optional)
-
-Frontend: Vercel
-
-Backend: Railway or Render
 
 Keep API keys in each platform’s Environment Variables, not in code.
